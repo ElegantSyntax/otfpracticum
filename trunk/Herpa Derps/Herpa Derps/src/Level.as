@@ -34,7 +34,7 @@ package
 			this.add(locations);
 			
 			this.add(new DerpsBasic(locations.startPoint.x,locations.startPoint.y));
-			this.add(new DerpsBasic(400,40));
+			//this.add(new DerpsBasic(400,40));
 			
 		}
 		
