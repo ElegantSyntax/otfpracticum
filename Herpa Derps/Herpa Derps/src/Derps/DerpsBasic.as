@@ -13,14 +13,14 @@ package Derps
 	public class DerpsBasic extends Entity 
 	{		
 		protected var sprite:Spritemap;
-		protected var facingRight:Boolean;
+		protected var facingRight:Boolean = true;
 		
 		protected var gravity:Number = 10;
+		protected var speed:Number = 100;
 		protected var velocity:Point = new Point();
 		
 		public function DerpsBasic(X:int = 0, Y:int = 0):void
 		{
-			
 			setPos(X, Y);
 			setHitbox(32, 32);
 			layer = 4;
@@ -51,7 +51,8 @@ package Derps
 				}
 				
 				y++;
-				velocity.x = 100;
+				
+				velocity.x = speed;
 			}
 			
 			x += velocity.x*FP.elapsed;
@@ -68,10 +69,21 @@ package Derps
 							y -= y - i;
 							tempBool = true;
 					}
-				}
+				}				
+				y++;
 				
-				if (!tempBool) x -= velocity.x*FP.elapsed;
+				if (!tempBool)
+				{
+					x -= velocity.x*FP.elapsed;
+				}
 			}
+			
+			if (x == prevX && velocity.x != 0)
+			{
+				velocity.x *= -1;
+				x += velocity.x*FP.elapsed;
+			}
+			
 			super.update();
 		}
 		
