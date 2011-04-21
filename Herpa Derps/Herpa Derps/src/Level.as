@@ -1,7 +1,9 @@
 package  
 {
 	import Assets;
+	import Pointer;	
 	import Derps.DerpsBasic;
+	import Derps.DerpsFallers;
 	import Layers.LayerBG;
 	import Layers.LayerHazards;
 	import Layers.LayerLocations;
@@ -15,14 +17,19 @@ package
 	 */
 	public class Level extends World 
 	{
+		private var   pointer:Pointer;
 		private var locations:LayerLocations;
-		private var width:int = 0;
-		private var height:int = 0;
+		private var     width:int = 0;
+		private var    height:int = 0;
 		
 		public function Level(W:int = 800, H:int = 480) 
 		{
 			width = W;
 			height = H;
+			
+			// Pointer
+			pointer = new Pointer();
+			this.add(pointer);
 			
 			// BG Image
 			this.add(new LayerBG(Assets.TestLevel_12_0));
@@ -38,13 +45,56 @@ package
 			locations = new LayerLocations(Assets.TestLevel_06_0);
 			this.add(locations);
 			
-			this.add(new DerpsBasic(locations.startPoint.x,locations.startPoint.y));
+			this.add(new DerpsFallers(locations.startPoint.x,locations.startPoint.y));
 			//this.add(new DerpsBasic(400,40));
 			
 		}
 		
 		override public function update():void 
 		{
+			
+			// Camera Controls
+			cameraLogic();
+			cameraBounds();
+			
+			super.update();
+		}
+		
+		private function cameraLogic():void
+		{
+			if (pointer.pointerState == Pointer.drag)
+			{
+				FP.camera.x += pointer.dragPoint.x/-25;
+				FP.camera.y += pointer.dragPoint.y/-25;
+			}
+			else if (pointer.dragPoint.x != 0 || pointer.dragPoint.y != 0 )
+			{
+				if (pointer.dragPoint.x > 0)
+				{
+					pointer.dragPoint.x -= pointer.dragPoint.x/20;
+				}
+				else if (pointer.dragPoint.x < 0)
+				{
+					pointer.dragPoint.x += pointer.dragPoint.x/-20;
+				}
+				
+				if (pointer.dragPoint.y > 0)
+				{
+					pointer.dragPoint.y -= pointer.dragPoint.y/20;
+				}
+				else if (pointer.dragPoint.y < 0)
+				{
+					pointer.dragPoint.y += pointer.dragPoint.y/-20;
+				}
+				
+				FP.camera.x += pointer.dragPoint.x/-25;
+				FP.camera.y += pointer.dragPoint.y/-25;
+			}
+		}
+		
+		private function cameraBounds():void
+		{
+			// Camera Limits
 			if (FP.camera.x < 0)
 			{
 				FP.camera.x = 0;
@@ -62,8 +112,6 @@ package
 			{
 				FP.camera.y = height - FP.screen.height;
 			}
-			
-			super.update();
 		}
 		
 	}
