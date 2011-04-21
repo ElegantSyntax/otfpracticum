@@ -86,6 +86,7 @@ package Derps
 				if (!movedToEmptySpace)
 				{
 					velocity.x *= -1;
+					facingRight = !facingRight;
 				}
 			}
 			

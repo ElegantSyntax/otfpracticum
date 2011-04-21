@@ -33,7 +33,9 @@ package Derps
 				super.update();
 			}
 			else
-			{
+			{				
+				sprite.play("dead");
+			
 				var terrains:Array = new Array();
 				FP.world.getType("Terrain", terrains);
 				
@@ -41,12 +43,17 @@ package Derps
 				{
 					if (terrain.isDestructable)
 					{
-						sprite.blend = BlendMode.ADD;
-						terrain.terrainImage.
+						sprite.blend = BlendMode.MULTIPLY;
+						// Draw the sprite to the destructable terrain layer
+						
+						terrain.updateMask();
+						//FP.world.remove(this);
+						
+						return;
 					}
 				}
 				
-				sprite.play("dead");
+				
 			}
 		}
 		
