@@ -14,18 +14,18 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'20/04/2011'</value>
+      <value>'4/21/2011'</value>
     </define>
     <source-path append="true">
-      <path-element>C:\Users\Gibble\Desktop\On The Fly Practicum\SVN\trunk\Herpa Derps\Herpa Derps\src</path-element>
-      <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
+      <path-element>C:\Users\Tiny\Desktop\OTF Practicum\Herpa Derps\Herpa Derps\src</path-element>
+      <path-element>C:\Program Files\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>C:\Users\Gibble\Desktop\On The Fly Practicum\SVN\trunk\Herpa Derps\Herpa Derps\lib\loadingbar.swc</path-element>
+      <path-element>C:\Users\Tiny\Desktop\OTF Practicum\Herpa Derps\Herpa Derps\lib\loadingbar.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>C:\Users\Gibble\Desktop\On The Fly Practicum\SVN\trunk\Herpa Derps\Herpa Derps\src\Main.as</path-element>
+    <path-element>C:\Users\Tiny\Desktop\OTF Practicum\Herpa Derps\Herpa Derps\src\Main.as</path-element>
   </file-specs>
   <default-background-color>#BEBEBE</default-background-color>
   <default-frame-rate>60</default-frame-rate>
