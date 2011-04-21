@@ -4,6 +4,7 @@ package
 	import Pointer;	
 	import Derps.DerpsBasic;
 	import Derps.DerpsFallers;
+	import Derps.DerpsRunner;
 	import Layers.LayerBG;
 	import Layers.LayerHazards;
 	import Layers.LayerLocations;
@@ -46,6 +47,7 @@ package
 			this.add(locations);
 			
 			this.add(new DerpsFallers(locations.startPoint.x,locations.startPoint.y));
+			this.add(new DerpsRunner(locations.startPoint.x,locations.startPoint.y));
 			//this.add(new DerpsBasic(400,40));
 			
 		}

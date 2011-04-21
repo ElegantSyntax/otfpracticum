@@ -36,7 +36,7 @@ package Layers
 		public function updateMask():void
 		{
 			var bmd:BitmapData = new BitmapData(terrainImage.width, terrainImage.height, true, 0);
-			terrainImage.render(bmd, new Point(0, 0), new Point(FP.camera.x, FP.camera.y));
+			terrainImage.render(bmd, FP.camera, FP.camera);
 			mask = new Pixelmask(bmd);
 		}
 		
