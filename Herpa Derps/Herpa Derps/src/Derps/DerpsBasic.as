@@ -31,6 +31,7 @@ package Derps
 			var prevY:Number = y;
 			var prevX:Number = x;
 			
+			//If we have not collided with terrain, apply gravity.
 			if (!collide('Terrain',x,y))
 			{
 				velocity.y += FP.elapsed;
@@ -41,48 +42,51 @@ package Derps
 					velocity.y = gravity;
 				}
 			}
+			//If we're not applying gravity, and we're not moving, we should be.
 			else if (velocity.x == 0)
 			{
 				velocity.y = 0;
 
-				while (collide('Terrain', x, y))
+				//Bump us up until we are only one pixel deep in the terrain.
+				while (collide('Terrain', x, y - 1))
 				{
 					y--;
 				}
 				
-				y++;
-				
 				velocity.x = speed;
 			}
 			
-			x += velocity.x*FP.elapsed;
 			y += velocity.y;
 			
-			var tempBool:Boolean = false;
+			//Flag to see if our Derp could move.
+			var movedToEmptySpace:Boolean = false;
 			
 			if (velocity.x != 0)
 			{		
 				for (var i:int = y; i > y - 5; i--)
 				{
-					if (!collide("Terrain", x, i) && !tempBool)
+					//Check if our predicted position does not collide with terrain.
+					if (!collide("Terrain", x + velocity.x*FP.elapsed, i))
 					{
-							y -= y - i;
-							tempBool = true;
+							//Set our y to the non collided space, then place us one pixel in the terrain.
+							y -= y - i - 1;
+							movedToEmptySpace = true;
+							break;
 					}
 				}				
-				y++;
 				
-				if (!tempBool)
+				//If we have not moved to an empty space we have hit a wall.
+				if (!movedToEmptySpace)
 				{
-					x -= velocity.x*FP.elapsed;
+					velocity.x *= -1;
 				}
 			}
 			
-			if (x == prevX && velocity.x != 0)
-			{
-				velocity.x *= -1;
-				x += velocity.x*FP.elapsed;
-			}
+			//Martin
+			//May want to consider moving this to an else below if (!movedToEmptySpace)
+			//If the derp is in a space that will just fit his hitbox this will push him
+			//into one of the walls. May want to wait for the next update to add velocity.
+			x += velocity.x*FP.elapsed;
 			
 			super.update();
 		}
