@@ -12,14 +12,16 @@ package Derps
 	 */
 	public class DerpsBasic extends Entity 
 	{		
-		protected var sprite:Spritemap;
+		protected var      sprite:Spritemap;
 		protected var facingRight:Boolean = true;
 		
-		protected var gravity:Number = 10;
-		protected var speed:Number = 100;
-		protected var velocity:Point = new Point();
+		protected var     gravity:Number = 10;
+		protected var       speed:Number = 100;
+		protected var    velocity:Point  = new Point();
 		
-		public function DerpsBasic(X:int = 0, Y:int = 0):void
+		protected var   hitPoints:int = 10;
+		
+		public function DerpsBasic(X:int = 0, Y:int = 0)
 		{
 			setPos(X, Y);
 			setHitbox(32, 32);
@@ -34,17 +36,22 @@ package Derps
 			//If we have not collided with terrain, apply gravity.
 			if (!collide('Terrain',x,y))
 			{
-				velocity.y += FP.elapsed;
+				velocity.y += FP.elapsed*10;
 				velocity.x = 0;
 				
 				if (velocity.y > gravity)
 				{
 					velocity.y = gravity;
 				}
+				
 			}
 			//If we're not applying gravity, and we're not moving, we should be.
 			else if (velocity.x == 0)
 			{
+				if (velocity.y >= 7)
+				{
+					hitPoints = 0;
+				}
 				velocity.y = 0;
 
 				//Bump us up until we are only one pixel deep in the terrain.
@@ -87,6 +94,11 @@ package Derps
 			//If the derp is in a space that will just fit his hitbox this will push him
 			//into one of the walls. May want to wait for the next update to add velocity.
 			x += velocity.x*FP.elapsed;
+			
+			if (collide('Hazards', x, y))
+			{
+				hitPoints = 0;
+			}
 			
 			super.update();
 		}
