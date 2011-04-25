@@ -24,7 +24,7 @@ package Derps
 		
 		override public function update():void 
 		{
-			sprite.flipped = !facingRight;
+			
 			
 			
 			

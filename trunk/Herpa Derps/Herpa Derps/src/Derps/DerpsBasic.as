@@ -11,15 +11,22 @@ package Derps
 	 * @author Joseph O'Connor
 	 */
 	public class DerpsBasic extends Entity 
-	{		
-		protected var      sprite:Spritemap;
-		protected var facingRight:Boolean = true;
+	{	
+		public static const   notDead:int = 0;
+		public static const   falling:int = 1;
+		public static const    hazard:int = 1;
+		public static const explosion:int = 1;
+		public static const   ability:int = 1;
 		
-		protected var     gravity:Number = 10;
-		protected var       speed:Number = 100;
-		protected var    velocity:Point  = new Point();
+		protected var          sprite:Spritemap;
+		protected var     facingRight:Boolean = true;
 		
-		protected var   hitPoints:int = 10;
+		protected var         gravity:Number = 10;
+		protected var           speed:Number = 100;
+		protected var        velocity:Point  = new Point();
+		
+		protected var       hitPoints:int = 10;
+		protected var    causeOfDeath:int = notDead;
 		
 		public function DerpsBasic(X:int = 0, Y:int = 0)
 		{
@@ -51,6 +58,7 @@ package Derps
 				if (velocity.y >= 7)
 				{
 					hitPoints = 0;
+					causeOfDeath = falling;
 				}
 				velocity.y = 0;
 
@@ -99,7 +107,10 @@ package Derps
 			if (collide('Hazards', x, y))
 			{
 				hitPoints = 0;
+				causeOfDeath = hazard;
 			}
+			
+			sprite.flipped = !facingRight;
 			
 			super.update();
 		}
