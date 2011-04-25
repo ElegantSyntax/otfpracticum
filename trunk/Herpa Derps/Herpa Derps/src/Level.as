@@ -11,6 +11,7 @@ package
 	import Layers.LayerTerrain;
 	import net.flashpunk.World;
 	import net.flashpunk.FP;
+	import net.flashpunk.utils.Input;
 	
 	/**
 	 * ...
@@ -46,14 +47,22 @@ package
 			locations = new LayerLocations(Assets.TestLevel_06_0);
 			this.add(locations);
 			
-			this.add(new DerpsFallers(locations.startPoint.x,locations.startPoint.y));
-			this.add(new DerpsRunner(locations.startPoint.x+60,locations.startPoint.y));
 			//this.add(new DerpsBasic(400,40));
 			
 		}
 		
 		override public function update():void 
 		{
+			
+			if (Input.mousePressed)
+			{
+				this.add(new DerpsFallers(locations.startPoint.x,locations.startPoint.y));
+			}
+			
+			if (Input.mouseReleased)
+			{
+				this.add(new DerpsRunner(locations.startPoint.x,locations.startPoint.y));
+			}
 			
 			// Camera Controls
 			cameraLogic();

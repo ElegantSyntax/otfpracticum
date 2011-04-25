@@ -48,22 +48,27 @@ package Derps
 				{
 					if (terrain.isDestructable)
 					{
-						//sprite.blend = BlendMode.MULTIPLY;
 						// Draw the sprite to the destructable terrain layer
 						
+						// Capture the terrain's BitmapData
 						var bmd:BitmapData = new BitmapData(terrain.terrainImage.width, terrain.terrainImage.height, true, 0);
 						terrain.graphic.render(bmd, FP.camera, FP.camera);
 						
-						var bmds:BitmapData = new BitmapData(32, 32, true, 0);
-						sprite.render(bmds, FP.camera, FP.camera);
+						// Capture the sprite's BitmapData
+						var corpsebmd:BitmapData = new BitmapData(32, 32, true, 0);
+						sprite.render(corpsebmd, FP.camera, FP.camera);
 						
-						bmd.copyPixels(bmds, new Rectangle(0, 0, 32, 32), new Point(x, y),bmds, new Point(0, 0), false);
+						// Copy the sprite to the terrian
+						bmd.copyPixels(corpsebmd, new Rectangle(0, 0, 32, 32), new Point(x, y), corpsebmd, new Point(0, 0), false);
 						
+						// Reset the terrains image and graphic
 						terrain.terrainImage = new Image(bmd);
 						terrain.graphic = terrain.terrainImage;
+						
+						// Update the mask
 						terrain.mask = new Pixelmask(bmd);
 						
-						//terrain.updateMask();
+						// Remove the corpse from the world
 						FP.world.remove(this);
 						
 						return;
