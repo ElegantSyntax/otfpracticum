@@ -57,9 +57,10 @@ package Derps
 						var bmds:BitmapData = new BitmapData(32, 32, true, 0);
 						sprite.render(bmds, FP.camera, FP.camera);
 						
-						bmd.copyPixels(bmds, new Rectangle(0, 0, 32, 32), new Point(x, y));
+						bmd.copyPixels(bmds, new Rectangle(0, 0, 32, 32), new Point(x, y),bmds, new Point(0, 0), false);
 						
 						terrain.terrainImage = new Image(bmd);
+						terrain.graphic = terrain.terrainImage;
 						terrain.mask = new Pixelmask(bmd);
 						
 						//terrain.updateMask();
