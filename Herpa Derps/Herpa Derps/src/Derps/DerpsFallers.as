@@ -32,10 +32,10 @@ package Derps
 			{
 				super.update();
 			}
-			else
+			else if (causeOfDeath == falling)
 			{				
 				sprite.play("dead");
-			
+				
 				var terrains:Array = new Array();
 				FP.world.getType("Terrain", terrains);
 				
@@ -47,13 +47,18 @@ package Derps
 						// Draw the sprite to the destructable terrain layer
 						
 						terrain.updateMask();
-						//FP.world.remove(this);
+						FP.world.remove(this);
 						
 						return;
 					}
 				}
 				
 				
+			}
+			else
+			{
+				FP.world.remove(this);
+				// Plain Death
 			}
 		}
 		
