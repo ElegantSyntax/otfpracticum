@@ -8,12 +8,40 @@ package Derps
 	 */
 	public class DerpsAbility extends Entity 
 	{
+		public static const    Runner:int = 0;
+		public static const   Climber:int = 0;
 		
-		public function DerpsAbility() 
+		public function DerpsAbility(TYPE:int) 
 		{
+			switch (TYPE)
+			{
+				case Runner:
+					type = "RunnerAbility";
+					break;
+				case Climber:
+					type = "ClimberAbility";
+					break;
+			}
 			
+			setHitbox(6, 24);
 		}
 		
+		public function updatePos(xPos:int, yPos:int, facingRight:Boolean):void 
+		{
+			y = yPos;
+			
+			switch (facingRight)
+			{
+				case true:
+					x = xPos + 32;
+					break;
+				case false:
+					x = xPos - 4;
+					break;
+			}
+			
+			super.update();
+		}
 	}
 
 }
