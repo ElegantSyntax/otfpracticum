@@ -47,7 +47,7 @@ package
 			this.add(locations);
 			
 			this.add(new DerpsFallers(locations.startPoint.x,locations.startPoint.y));
-			this.add(new DerpsRunner(locations.startPoint.x,locations.startPoint.y));
+			this.add(new DerpsRunner(locations.startPoint.x+60,locations.startPoint.y));
 			//this.add(new DerpsBasic(400,40));
 			
 		}

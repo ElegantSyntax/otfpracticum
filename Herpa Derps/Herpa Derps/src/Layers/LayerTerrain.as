@@ -40,6 +40,7 @@ package Layers
 			mask = new Pixelmask(bmd);
 		}
 		
+		
 	}
 
 }
