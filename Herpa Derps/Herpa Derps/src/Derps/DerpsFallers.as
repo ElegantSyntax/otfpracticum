@@ -28,6 +28,8 @@ package Derps
 			sprite.play("normal");
 			graphic = sprite;
 			
+			type = "Faller";
+			
 			super(X, Y);
 		}
 		

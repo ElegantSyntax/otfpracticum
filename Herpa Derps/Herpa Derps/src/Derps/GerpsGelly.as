@@ -29,9 +29,11 @@ package Derps
 			sprite.play("normal");
 			graphic = sprite;
 			
+			type = "Gelly";
+			
 			super(X, Y);
 			
-			//speed = 90;
+			speed = 90;
 		}
 		
 		override public function update():void 

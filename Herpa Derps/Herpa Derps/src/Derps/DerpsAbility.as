@@ -23,12 +23,12 @@ package Derps
 					break;
 			}
 			
-			setHitbox(6, 27);
+			setHitbox(6, 28);
 		}
 		
 		public function updatePos(xPos:int, yPos:int, facingRight:Boolean):void 
 		{
-			y = yPos;
+			y = yPos - 1;
 			
 			switch (facingRight)
 			{
