@@ -3,7 +3,7 @@ package
 	import flash.display.*;
 	import flash.events.*;
 
-	public class bolders extends MovieClip
+	public class Bolders extends MovieClip
 	{	
 		
 		var position1:uint = 0;
