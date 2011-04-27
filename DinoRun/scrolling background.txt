@@ -1,0 +1,52 @@
+var bg_1:bg_mc = new bg_mc();
+var bg_2:bg_mc = new bg_mc();
+var bolder1:bolders_mc = new bolders_mc();
+var bolder2:threetrunk_mc = new threetrunk_mc();
+
+
+var yLowerLimit:uint = 448; 
+var speed:uint = 3;
+
+bg_1.x =bg_1.width/2;
+bg_1.y = 0;
+
+bolder1.x = 0;
+bolder1.y =0;
+
+bolder2.x = 64;
+bolder2.y = bg_2.height/2;
+
+bg_2.x = bg_1.width/2;
+bg_2.y = -448;
+
+
+addChild(bg_1);
+addChild(bg_2);
+addChild(bolder1);
+addChild(bolder2);
+
+addEventListener(Event.ENTER_FRAME,scroll);
+
+function scroll(event:Event):void
+{
+	bg_1.y +=speed;
+	bolder1.y += speed;
+	bolder2.y +=speed;
+	bg_2.y +=speed;
+	
+	
+	if(bg_1.y > yLowerLimit)
+	{
+		bg_1.y = -448;
+		bolder1.y = -448;
+	}
+	if(bg_2.y > yLowerLimit)
+	{
+		bg_2.y = -448;
+		bolder2.y = -448;
+	}
+	
+
+}
+
+
