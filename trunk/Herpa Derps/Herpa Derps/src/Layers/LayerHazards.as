@@ -24,7 +24,7 @@ package Layers
 			x = X;
 			y = Y;
 			
-			layer = 8;
+			layer = 10;
 			type = "Hazard";
 			
 			updateMask();

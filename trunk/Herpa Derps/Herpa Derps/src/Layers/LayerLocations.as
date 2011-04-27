@@ -53,7 +53,7 @@ package Layers
 						
 						if (startPoint == null && red == 0 && green == 0 && blue == 255 )
 						{
-							startPoint = new Point(xPos, yPos);
+							startPoint = new Point(xPos, yPos+1); // Adjust so that they start in the ground 1px
 						}
 						else if (exitPoint == null && red == 0 && green == 255 && blue == 0 )
 						{

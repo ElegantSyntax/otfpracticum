@@ -3,32 +3,35 @@ package Derps
 	import flash.display.BitmapData;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
-	import net.flashpunk.graphics.Canvas;
+	import Layers.LayerTerrain;
+	import net.flashpunk.graphics.Image;
 	import net.flashpunk.graphics.Spritemap;
 	import net.flashpunk.FP;
 	import Layers.LayerTerrain;
 	import flash.display.BlendMode;
-	import net.flashpunk.graphics.Image;
 	import net.flashpunk.masks.Pixelmask;
 	
 	/**
 	 * ...
 	 * @author Joseph O'Connor
 	 */
-	public class DerpsFallers extends DerpsBasic 
+	public class GerpsGelly extends DerpsBasic 
 	{
 		
-		public function DerpsFallers(X:int = 0, Y:int = 0) 
+		public function GerpsGelly(X:int = 0, Y:int = 0) 
 		{
-			sprite = new Spritemap(Assets.Fallers, 32, 32);
+			sprite = new Spritemap(Assets.Gellies, 32, 32);
 			
 			sprite.add("normal", [0]);
-			sprite.add("dead", [1]);
+			sprite.add("stretched", [1]);
+			sprite.add("dead", [2]);
 			
 			sprite.play("normal");
 			graphic = sprite;
 			
 			super(X, Y);
+			
+			//speed = 90;
 		}
 		
 		override public function update():void 
@@ -37,16 +40,20 @@ package Derps
 			{
 				super.update();
 			}
-			else if (causeOfDeath == falling)
-			{				
+			else if (causeOfDeath == hazard)
+			{
 				sprite.play("dead");
+				
+				var dirMod:int = (facingRight) ? 1 : -1;
+				x = int(32 * Math.round(x / 32)) + (24 * (dirMod)) - dirMod;
+				y -= 1;
 				
 				var terrains:Array = new Array();
 				FP.world.getType("Terrain", terrains);
 				
 				for each (var terrain:LayerTerrain in terrains)
 				{
-					if (terrain.isDestructable)
+					if (!terrain.isDestructable)
 					{
 						// Draw the sprite to the destructable terrain layer
 						
@@ -74,13 +81,15 @@ package Derps
 						return;
 					}
 				}
-				
 			}
 			else
 			{
+				// Regular Death
 				FP.world.remove(this);
-				// Plain Death
 			}
+			
+			
+			
 		}
 		
 	}

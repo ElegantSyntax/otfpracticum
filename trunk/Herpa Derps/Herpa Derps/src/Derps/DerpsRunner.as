@@ -19,14 +19,14 @@ package Derps
 		{
 			sprite = new Spritemap(Assets.Runners, 32, 32);
 			
-			speed = 150;
-			
 			sprite.add("normal", [0]);
 			
 			sprite.play("normal");
 			graphic = sprite;
 			
 			super(X, Y);
+			
+			//speed = 150;
 		}
 		
 		override public function added():void 
@@ -52,7 +52,7 @@ package Derps
 							x -= 20;
 							break;
 						case false:
-							terrain.removeRect(x - 5, y - 2, 36, 34);
+							terrain.removeRect(x - 7, y - 2, 36, 34); // I think the 7 should really be a 5...
 							x += 20;
 							break;
 					}
@@ -61,19 +61,13 @@ package Derps
 					
 					if (hitPoints <= 0)
 					{
-						causeOfDeath = DerpsBasic.ability;
+						causeOfDeath = special;
 					}
 				}
 			}
-			else if (causeOfDeath == DerpsBasic.ability)
+			else if (causeOfDeath == special)
 			{
 				// Cool Death
-				FP.world.remove(ability);
-				FP.world.remove(this);
-			}
-			else if (causeOfDeath == DerpsBasic.hazard)
-			{
-				// Hazard Death
 				FP.world.remove(ability);
 				FP.world.remove(this);
 			}

@@ -23,7 +23,7 @@ package Derps
 					break;
 			}
 			
-			setHitbox(6, 24);
+			setHitbox(6, 27);
 		}
 		
 		public function updatePos(xPos:int, yPos:int, facingRight:Boolean):void 
@@ -36,7 +36,7 @@ package Derps
 					x = xPos + 32;
 					break;
 				case false:
-					x = xPos - 4;
+					x = xPos - 6; // this should be 4 I think.
 					break;
 			}
 			

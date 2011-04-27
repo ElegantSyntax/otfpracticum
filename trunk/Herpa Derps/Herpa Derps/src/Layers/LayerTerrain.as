@@ -31,7 +31,7 @@ package Layers
 			x = X;
 			y = Y;
 			
-			layer = 10;
+			layer = 8;
 			type = "Terrain";
 			
 			updateMask();
