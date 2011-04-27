@@ -14,9 +14,9 @@ package Derps
 	{	
 		public static const   notDead:int = 0;
 		public static const   falling:int = 1;
-		public static const    hazard:int = 1;
-		public static const explosion:int = 1;
-		public static const   ability:int = 1;
+		public static const    hazard:int = 2;
+		public static const explosion:int = 3;
+		public static const   special:int = 4;
 		
 		protected var          sprite:Spritemap;
 		protected var     facingRight:Boolean = true;
@@ -33,6 +33,7 @@ package Derps
 			setPos(X, Y);
 			setHitbox(32, 32);
 			layer = 4;
+			trace(speed);
 		}
 		
 		override public function update():void 
@@ -45,6 +46,8 @@ package Derps
 			{
 				velocity.y += FP.elapsed*10;
 				velocity.x = 0;
+				
+				x = int(32 * Math.round(x/32));
 				
 				if (velocity.y > gravity)
 				{
@@ -70,7 +73,7 @@ package Derps
 				
 				velocity.x = speed;
 			}
-			
+					
 			y += velocity.y;
 			
 			//Flag to see if our Derp could move.
@@ -96,15 +99,20 @@ package Derps
 					velocity.x *= -1;
 					facingRight = !facingRight;
 				}
+				else
+				{
+					//Martin
+					//May want to consider moving this to an else below if (!movedToEmptySpace)
+					//If the derp is in a space that will just fit his hitbox this will push him
+					//into one of the walls. May want to wait for the next update to add velocity.
+					if (hitPoints > 0) // If the derp is alive, then let it move
+					{
+						x += velocity.x * FP.elapsed;
+					}
+				}
 			}
 			
-			//Martin
-			//May want to consider moving this to an else below if (!movedToEmptySpace)
-			//If the derp is in a space that will just fit his hitbox this will push him
-			//into one of the walls. May want to wait for the next update to add velocity.
-			x += velocity.x*FP.elapsed;
-			
-			if (collide('Hazards', x, y))
+			if (collide('Hazard', x, y))
 			{
 				hitPoints = 0;
 				causeOfDeath = hazard;

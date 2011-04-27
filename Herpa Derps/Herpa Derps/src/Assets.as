@@ -16,6 +16,7 @@ package
 		// Derp Units
 		[Embed(source='Units/Runners.png')]									public static const Runners:Class;
 		[Embed(source='Units/Fallers.png')]									public static const Fallers:Class;
+		[Embed(source='Units/Gellies.png')]									public static const Gellies:Class;
 		
 		
 		public function Assets():void

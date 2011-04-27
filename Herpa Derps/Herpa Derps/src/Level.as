@@ -1,6 +1,7 @@
 package  
 {
 	import Assets;
+	import Derps.GerpsGelly;
 	import Pointer;	
 	import Derps.DerpsBasic;
 	import Derps.DerpsFallers;
@@ -12,6 +13,7 @@ package
 	import net.flashpunk.World;
 	import net.flashpunk.FP;
 	import net.flashpunk.utils.Input;
+	import net.flashpunk.utils.Key;
 	
 	/**
 	 * ...
@@ -36,10 +38,6 @@ package
 			// BG Image
 			this.add(new LayerBG(Assets.TestLevel_12_0));
 			
-			// Terrain
-			this.add(new LayerTerrain(Assets.TestLevel_10_0, true));
-			this.add(new LayerTerrain(Assets.TestLevel_08_0));
-			
 			// Hazards
 			this.add(new LayerHazards(Assets.TestLevel_08_1));
 			
@@ -47,21 +45,27 @@ package
 			locations = new LayerLocations(Assets.TestLevel_06_0);
 			this.add(locations);
 			
-			//this.add(new DerpsBasic(400,40));
-			
+			// Terrain
+			this.add(new LayerTerrain(Assets.TestLevel_10_0, true));
+			this.add(new LayerTerrain(Assets.TestLevel_08_0));			
 		}
 		
 		override public function update():void 
 		{
 			
-			if (Input.mousePressed)
+			if (Input.released(Key.DIGIT_1))
 			{
 				this.add(new DerpsFallers(locations.startPoint.x,locations.startPoint.y));
 			}
 			
-			if (Input.mouseReleased)
+			if (Input.released(Key.DIGIT_2))
 			{
 				this.add(new DerpsRunner(locations.startPoint.x,locations.startPoint.y));
+			}
+			
+			if (Input.released(Key.DIGIT_3))
+			{
+				this.add(new GerpsGelly(locations.startPoint.x,locations.startPoint.y));
 			}
 			
 			// Camera Controls
