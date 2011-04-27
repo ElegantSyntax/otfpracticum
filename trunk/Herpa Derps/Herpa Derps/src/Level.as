@@ -1,7 +1,7 @@
 package  
 {
 	import Assets;
-	import Derps.GerpsGelly;
+	import Derps.DerpsGelly;
 	import Pointer;	
 	import Derps.DerpsBasic;
 	import Derps.DerpsFallers;
@@ -65,7 +65,7 @@ package
 			
 			if (Input.released(Key.DIGIT_3))
 			{
-				this.add(new GerpsGelly(locations.startPoint.x,locations.startPoint.y));
+				this.add(new DerpsGelly(locations.startPoint.x,locations.startPoint.y));
 			}
 			
 			// Camera Controls
