@@ -33,7 +33,7 @@ package Derps
 			setPos(X, Y);
 			setHitbox(32, 32);
 			layer = 4;
-			trace(speed);
+			
 		}
 		
 		override public function update():void 
@@ -44,10 +44,24 @@ package Derps
 			//If we have not collided with terrain, apply gravity.
 			if (!collide('Terrain',x,y))
 			{
+				trace(speed + " 1");
+				if (velocity.y == 0)
+				{
+					x = Math.floor(x);
+					
+					var dirMod:int = (facingRight) ? -1 : 1;
+										
+					while (!collide('Terrain', x+dirMod, y))
+					{
+						x+=dirMod;
+					}
+					
+				}
+				
 				velocity.y += FP.elapsed*10;
 				velocity.x = 0;
 				
-				x = int(32 * Math.round(x/32));
+				//x = int(32 * Math.round(x/32));
 				
 				if (velocity.y > gravity)
 				{
@@ -58,6 +72,7 @@ package Derps
 			//If we're not applying gravity, and we're not moving, we should be.
 			else if (velocity.x == 0)
 			{
+				trace(speed + " 2");
 				if (velocity.y >= 7)
 				{
 					hitPoints = 0;
@@ -68,6 +83,7 @@ package Derps
 				//Bump us up until we are only one pixel deep in the terrain.
 				while (collide('Terrain', x, y - 1))
 				{
+					trace(speed + " 3");
 					y--;
 				}
 				
@@ -81,6 +97,7 @@ package Derps
 			
 			if (velocity.x != 0)
 			{		
+				trace(speed + " 4");
 				for (var i:int = y; i > y - 5; i--)
 				{
 					//Check if our predicted position does not collide with terrain.
@@ -96,6 +113,7 @@ package Derps
 				//If we have not moved to an empty space we have hit a wall.
 				if (!movedToEmptySpace)
 				{
+					trace(speed + " 5");
 					velocity.x *= -1;
 					facingRight = !facingRight;
 				}

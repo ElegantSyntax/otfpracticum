@@ -24,9 +24,11 @@ package Derps
 			sprite.play("normal");
 			graphic = sprite;
 			
+			type = "Runner";
+			
 			super(X, Y);
 			
-			//speed = 150;
+			speed = 150;
 		}
 		
 		override public function added():void 
