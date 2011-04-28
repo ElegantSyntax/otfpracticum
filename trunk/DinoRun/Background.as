@@ -1,5 +1,6 @@
 package  
 {
+	import authoring.authObject;
 	import flash.display.*;
 	import flash.events.*;
 	import flash.utils.getDefinitionByName;
@@ -34,8 +35,13 @@ package
 			addChild(bg_1);
 			addChild(bg_2);
 
-			addEventListener(Event.ENTER_FRAME,movingBG);
+			addEventListener(Event.ENTER_FRAME, movingBG);
+			addEventListener(Event.ENTER_FRAME, fullSPEED);
 					
+		}
+		public function fullSPEED(event:Event)
+		{
+
 		}
 		private function movingBG(event:Event)
 		{
