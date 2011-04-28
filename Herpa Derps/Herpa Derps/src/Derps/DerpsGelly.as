@@ -45,10 +45,23 @@ package Derps
 			else if (causeOfDeath == hazard)
 			{
 				sprite.play("dead");
-				
 				var dirMod:int = (facingRight) ? 1 : -1;
-				x = int(32 * Math.round(x / 32)) + (24 * (dirMod)) - dirMod;
-				y -= 1;
+				
+				if (!collide('Hazard', x, y - 32) )
+				{
+					// Falling
+					sprite.centerOrigin();
+					sprite.angle = 90 * -dirMod;
+					x = int(16 * Math.round(x / 16));// + (24 * (dirMod)) - dirMod;
+					y = int(16 * Math.round(y / 16))+16;
+					
+					trace("X: " + x + " Y: " + y);
+				}
+				else
+				{
+					x = int(16 * Math.round(x / 16)) + (16*dirMod);
+					y = int(16 * Math.round(y / 16));
+				}
 				
 				var terrains:Array = new Array();
 				FP.world.getType("Terrain", terrains);
@@ -68,7 +81,7 @@ package Derps
 						sprite.render(corpsebmd, FP.camera, FP.camera);
 						
 						// Copy the sprite to the terrian
-						bmd.copyPixels(corpsebmd, new Rectangle(0, 0, 32, 32), new Point(x, y), corpsebmd, new Point(0, 0), false);
+						bmd.copyPixels(corpsebmd, new Rectangle(0, 0, 32, 32), new Point(x, y), corpsebmd, new Point(0, 0), true);
 						
 						// Reset the terrains image and graphic
 						terrain.terrainImage = new Image(bmd);
