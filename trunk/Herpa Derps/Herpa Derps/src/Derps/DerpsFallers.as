@@ -61,7 +61,7 @@ package Derps
 						sprite.render(corpsebmd, FP.camera, FP.camera);
 						
 						// Copy the sprite to the terrian
-						bmd.copyPixels(corpsebmd, new Rectangle(0, 0, 32, 32), new Point(x, y), corpsebmd, new Point(0, 0), false);
+						bmd.copyPixels(corpsebmd, new Rectangle(0, 0, 32, 32), new Point(x, y), corpsebmd, new Point(0, 0), true);
 						
 						// Reset the terrains image and graphic
 						terrain.terrainImage = new Image(bmd);
