@@ -28,7 +28,7 @@ package Derps
 			
 			super(X, Y);
 			
-			speed = 150;
+			speed = 2.0;
 		}
 		
 		override public function added():void 

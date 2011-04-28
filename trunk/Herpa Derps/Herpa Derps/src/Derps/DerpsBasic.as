@@ -21,8 +21,8 @@ package Derps
 		protected var          sprite:Spritemap;
 		protected var     facingRight:Boolean = true;
 		
-		protected var         gravity:Number = 10;
-		protected var           speed:Number = 100;
+		protected var         gravity:Number = .15;
+		protected var           speed:Number = 1.5;
 		protected var        velocity:Point  = new Point();
 		
 		protected var       hitPoints:int = 10;
@@ -58,24 +58,20 @@ package Derps
 					}
 					
 				}
-				
-				halfYVel = FP.elapsed*10/2;
-				
-				velocity.y += halfYVel;
+								
+				velocity.y += gravity;
 				velocity.x = 0;
 				
-				//x = int(32 * Math.round(x/32));
-				
-				if (velocity.y > gravity)
+				if (velocity.y > 5)
 				{
-					velocity.y = gravity;
+					velocity.y = 5;
 				}
 				
 			}
 			//If we're not applying gravity, and we're not moving, we should be.
 			else if (velocity.x == 0)
 			{
-				if (velocity.y >= 7)
+				if (velocity.y >= 5)
 				{
 					hitPoints = 0;
 					causeOfDeath = falling;
@@ -92,7 +88,6 @@ package Derps
 			}
 					
 			y += velocity.y;
-			velocity.y += halfYVel;
 			
 			//Flag to see if our Derp could move.
 			var movedToEmptySpace:Boolean = false;
@@ -102,7 +97,7 @@ package Derps
 				for (var i:int = y; i > y - 5; i--)
 				{
 					//Check if our predicted position does not collide with terrain.
-					if (!collide("Terrain", x + velocity.x*FP.elapsed, i))
+					if (!collide("Terrain", x + velocity.x, i))
 					{
 							//Set our y to the non collided space, then place us one pixel in the terrain.
 							y -= y - i - 1;
@@ -125,7 +120,7 @@ package Derps
 					//into one of the walls. May want to wait for the next update to add velocity.
 					if (hitPoints > 0) // If the derp is alive, then let it move
 					{
-						x += velocity.x * FP.elapsed;
+						x += velocity.x;
 					}
 				}
 			}
