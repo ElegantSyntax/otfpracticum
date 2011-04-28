@@ -33,7 +33,7 @@ package Derps
 			
 			super(X, Y);
 			
-			speed = 90;
+			speed = 1.0;
 		}
 		
 		override public function update():void 
