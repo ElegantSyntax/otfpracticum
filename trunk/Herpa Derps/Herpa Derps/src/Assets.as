@@ -14,9 +14,10 @@ package
 		[Embed(source='Levels/TestLevel/Layer06(Locations).png')]			public static const TestLevel_06_0:Class;
 		
 		// Derp Units
-		[Embed(source='Units/Runners.png')]									public static const Runners:Class;
-		[Embed(source='Units/Fallers.png')]									public static const Fallers:Class;
-		[Embed(source='Units/Gellies.png')]									public static const Gellies:Class;
+		[Embed(source='Units/Runners.png')]									public static const  Runners:Class;
+		[Embed(source='Units/Fallers.png')]									public static const  Fallers:Class;
+		[Embed(source='Units/Gellies.png')]									public static const  Gellies:Class;
+		[Embed(source='Units/Climbers.png')]								public static const Climbers:Class;
 		
 		
 		public function Assets():void

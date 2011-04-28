@@ -9,7 +9,7 @@ package Derps
 	public class DerpsAbility extends Entity 
 	{
 		public static const    Runner:int = 0;
-		public static const   Climber:int = 0;
+		public static const   Climber:int = 1;
 		
 		public function DerpsAbility(TYPE:int) 
 		{

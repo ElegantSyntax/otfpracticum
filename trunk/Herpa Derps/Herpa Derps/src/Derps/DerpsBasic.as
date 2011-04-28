@@ -31,7 +31,7 @@ package Derps
 		public function DerpsBasic(X:int = 0, Y:int = 0)
 		{
 			setPos(X, Y);
-			setHitbox(32, 32);
+			setHitbox(28, 32, -2, 0);
 			layer = 4;
 			
 		}
@@ -41,7 +41,7 @@ package Derps
 			var prevY:Number = y;
 			var prevX:Number = x;
 			
-			var halfYVel = 0;
+			var halfYVel:Number = 0;
 			
 			//If we have not collided with terrain, apply gravity.
 			if (!collide('Terrain',x,y))

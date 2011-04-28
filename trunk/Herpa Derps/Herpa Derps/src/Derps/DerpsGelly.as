@@ -53,9 +53,7 @@ package Derps
 					sprite.centerOrigin();
 					sprite.angle = 90 * -dirMod;
 					x = int(16 * Math.round(x / 16));// + (24 * (dirMod)) - dirMod;
-					y = int(16 * Math.round(y / 16))+16;
-					
-					trace("X: " + x + " Y: " + y);
+					y = int(16 * Math.round(y / 16))+16 ;
 				}
 				else
 				{
