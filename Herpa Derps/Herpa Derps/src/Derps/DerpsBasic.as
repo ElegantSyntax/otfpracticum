@@ -41,6 +41,8 @@ package Derps
 			var prevY:Number = y;
 			var prevX:Number = x;
 			
+			var halfYVel = 0;
+			
 			//If we have not collided with terrain, apply gravity.
 			if (!collide('Terrain',x,y))
 			{
@@ -57,7 +59,9 @@ package Derps
 					
 				}
 				
-				velocity.y += FP.elapsed*10;
+				halfYVel = FP.elapsed*10/2;
+				
+				velocity.y += halfYVel;
 				velocity.x = 0;
 				
 				//x = int(32 * Math.round(x/32));
@@ -88,6 +92,7 @@ package Derps
 			}
 					
 			y += velocity.y;
+			velocity.y += halfYVel;
 			
 			//Flag to see if our Derp could move.
 			var movedToEmptySpace:Boolean = false;

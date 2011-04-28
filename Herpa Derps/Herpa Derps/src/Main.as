@@ -16,7 +16,7 @@ package
 		
 		public function Main():void 
 		{
-			super(800, 480);
+			super(800, 480, 60, true);
 		}
 
 		override public function init():void 
@@ -25,6 +25,10 @@ package
 			FP.world = new Level(1600, 480);
 			
 			super.init();
+		}
+		override public function update():void 
+		{
+			super.update();
 		}
 
 	}
