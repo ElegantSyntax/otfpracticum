@@ -2,18 +2,28 @@ package
 {
 	import flash.display.*;
 	import flash.events.*;
+	import flash.utils.getDefinitionByName;
 	
 	public class Background extends MovieClip
 	{
-		var bg_1:bg_mc = new bg_mc();
-		var bg_2:bg_mc = new bg_mc();
+		var bg_1:MovieClip;
+		var bg_2:MovieClip;
 
 		var yLowerLimit:uint = 448; 
-		var speed:uint = 3;
+		var speed:uint = 2;
 
 	
 		public function Background() 
 		{
+			var myLibraryGraphic:Class;
+			
+			//Get the class (specifically movieclip) from my lib fla.
+			myLibraryGraphic = getDefinitionByName("bg_mc") as Class;
+			
+			//Create the new movieclips.
+			bg_1 = new myLibraryGraphic() as MovieClip;
+			bg_2 = new myLibraryGraphic() as MovieClip;
+			
 			bg_1.x =bg_1.width/2;
 			bg_1.y = 0;
 
@@ -45,6 +55,6 @@ package
 		
 		
 		}//end of moving function
-	}
+	}//end class
 
-	}//end of package
+}//end of package
