@@ -51,7 +51,7 @@ package
 				}
 				else if (dino.x == position1)
 				{
-					dino.x = position1;
+					dino.x = position2;
 				}
 			}
 			if (leftArrow)
@@ -68,10 +68,7 @@ package
 		
 		}
 		public function keyDown(event:KeyboardEvent)
-		{
-			trace("Rightarrow" + rightArrow);
-			trace("Leftarrow" + leftArrow);
-			
+		{	
 			//right
 			if (event.keyCode == 39)
 			{		
