@@ -28,6 +28,8 @@ package Derps
 		protected var       hitPoints:int = 10;
 		protected var    causeOfDeath:int = notDead;
 		
+		public    var      isClimbing:Boolean = false;
+		
 		public function DerpsBasic(X:int = 0, Y:int = 0)
 		{
 			setPos(X, Y);
