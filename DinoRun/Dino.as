@@ -17,9 +17,7 @@ package
 			
 		public function Dino() 
 		{
-			addEventListener(Event.ENTER_FRAME, Initialize);
-			
-			
+			addEventListener(Event.ENTER_FRAME, Initialize);			
 		}//end of function
 		
 		public function Initialize(e:Event)
@@ -33,7 +31,6 @@ package
 			dino.y = 384;
 			
 			addChild(dino);
-
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP, keyUP);
 			addEventListener(Event.ENTER_FRAME, Move);

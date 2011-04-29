@@ -18,16 +18,16 @@ package
 		var offSety:int = 64;
 
 		var yLowerLimit:uint = 448; 
-		var speed:uint = 2;
+		public var speed:uint = 2;
 		static var count:int = 0;
+		
 		
 		public function bolders() 
 		{
 			var myLibraryGraphic:Class;
-			
 			//Get the class (specifically movieclip) from my lib fla.
 			myLibraryGraphic = getDefinitionByName("bolders_mc") as Class;
-					
+
 			arrayofBolders  = new Array();
 			
 			for (var lines:int; lines < 7; lines++)
@@ -78,9 +78,14 @@ package
 
 			}
 	
-			addEventListener(Event.ENTER_FRAME,scrolling);
-			
+			addEventListener(Event.ENTER_FRAME, scrolling);
+						
 		}
+		public function fullSPEED()
+		{
+			speed = 4;
+		}
+		
 		/*************************************
 		 * function that will change
 		 * the bolders x position everytime
