@@ -29,9 +29,9 @@ package Derps
 			sprite.play("normal");
 			graphic = sprite;
 			
-			type = "Gelly";
-			
 			super(X, Y);
+			
+			type = "Gelly";
 			
 			speed = 1.0;
 		}
