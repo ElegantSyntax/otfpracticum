@@ -81,7 +81,7 @@ package
 						
 						removeEventListener(Event.ENTER_FRAME, collisionCheck);
 						removeEventListener(Event.ENTER_FRAME, showTime);
-						gotoAndStop("gameover");
+						DRD(this.parent).gotoAndStop("gameover");
 						endGameText.text = " GAME OVER";
 						addChild(endGameText);
 				}
