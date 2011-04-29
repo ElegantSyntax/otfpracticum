@@ -3,6 +3,12 @@ package
 	import Assets;
 	import Derps.DerpsClimber;
 	import Derps.DerpsGelly;
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
+	import flash.display.Loader;
+	import flash.net.URLRequest;
+	import flash.events.ProgressEvent;
+	import flash.events.Event;
 	import Pointer;	
 	import Derps.DerpsBasic;
 	import Derps.DerpsFallers;
@@ -27,7 +33,9 @@ package
 		private var     width:int = 0;
 		private var    height:int = 0;
 		
-		public function Level(W:int = 800, H:int = 480) 
+		public var lBG:Loader = new Loader();
+		
+		public function Level(LEVEL:String, W:int = 800, H:int = 480) 
 		{
 			width = W;
 			height = H;
@@ -36,8 +44,9 @@ package
 			pointer = new Pointer();
 			this.add(pointer);
 			
-			// BG Image
-			this.add(new LayerBG(Assets.TestLevel_12_0));
+			var rBG:URLRequest = new URLRequest("/Levels/" + LEVEL + "/Layer12(Background).png");
+			lBG.contentLoaderInfo.addEventListener(Event.COMPLETE, setBG);
+			lBG.load(rBG);
 			
 			// Hazards
 			this.add(new LayerHazards(Assets.TestLevel_08_1));
@@ -49,6 +58,13 @@ package
 			// Terrain
 			this.add(new LayerTerrain(Assets.TestLevel_10_0, true));
 			this.add(new LayerTerrain(Assets.TestLevel_08_0));			
+		}
+		
+		public function setBG(e:Event):void
+		{
+			var bmp:Bitmap = Bitmap(lBG.content);
+			var bmpd:BitmapData = bmp.bitmapData;
+			this.add(new LayerBG(Class(bmpd)));
 		}
 		
 		override public function update():void 
