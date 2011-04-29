@@ -7,9 +7,11 @@ package
 	{
 		public var startbtn:SimpleButton;
 		
+		
 		public function DRD() 
 		{		
-			startbtn.addEventListener(MouseEvent.CLICK,playGame);
+			startbtn.addEventListener(MouseEvent.CLICK, playGame);
+			
 		}
 		
 		public function playGame(event:MouseEvent)

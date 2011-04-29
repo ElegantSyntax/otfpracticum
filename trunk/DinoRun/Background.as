@@ -11,13 +11,13 @@ package
 		var bg_2:MovieClip;
 
 		var yLowerLimit:uint = 448; 
-		var speed:uint = 2;
+		public var speed:uint;
 
 	
 		public function Background() 
 		{
 			var myLibraryGraphic:Class;
-			
+			speed = 2;
 			//Get the class (specifically movieclip) from my lib fla.
 			myLibraryGraphic = getDefinitionByName("bg_mc") as Class;
 			
@@ -36,12 +36,11 @@ package
 			addChild(bg_2);
 
 			addEventListener(Event.ENTER_FRAME, movingBG);
-			addEventListener(Event.ENTER_FRAME, fullSPEED);
-					
+								
 		}
-		public function fullSPEED(event:Event)
+		public function fullSPEED()
 		{
-
+			speed =6;
 		}
 		private function movingBG(event:Event)
 		{
