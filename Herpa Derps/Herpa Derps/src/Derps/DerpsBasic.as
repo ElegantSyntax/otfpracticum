@@ -30,11 +30,13 @@ package Derps
 		
 		public    var      isClimbing:Boolean = false;
 		
-		public function DerpsBasic(X:int = 0, Y:int = 0)
+		public function DerpsBasic(X:int = 0, Y:int = 0, FACINGRIGHT:Boolean = true)
 		{
 			setPos(X, Y);
 			setHitbox(28, 32, -2, 0);
 			layer = 4;
+			facingRight = FACINGRIGHT;
+			trace(facingRight);
 			
 		}
 		

@@ -1,6 +1,7 @@
 package Layers
 {
 	import Assets;
+	import flash.display.BitmapData;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
 	
@@ -12,9 +13,10 @@ package Layers
 	{
 		public var bgImage:Image;
 		
-		public function LayerBG(BGIMAGE:Class, X:int = 0, Y:int = 0) 
+		public function LayerBG(BGIMAGE:BitmapData, X:int = 0, Y:int = 0) 
 		{
 			bgImage = new Image(BGIMAGE);
+						
 			graphic = bgImage;
 			
 			x = X;
