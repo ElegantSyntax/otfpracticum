@@ -18,7 +18,7 @@ package Derps
 	public class DerpsFallers extends DerpsBasic 
 	{
 		
-		public function DerpsFallers(X:int = 0, Y:int = 0) 
+		public function DerpsFallers(X:int = 0, Y:int = 0, FACINGRIGHT:Boolean = true) 
 		{
 			sprite = new Spritemap(Assets.Fallers, 32, 32);
 			
@@ -30,7 +30,7 @@ package Derps
 			
 			type = "Faller";
 			
-			super(X, Y);
+			super(X, Y, FACINGRIGHT);
 		}
 		
 		override public function update():void 

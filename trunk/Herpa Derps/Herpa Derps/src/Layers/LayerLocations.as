@@ -18,7 +18,7 @@ package Layers
 		public var startPoint:Point = null;
 		public var  exitPoint:Point = null;
 		
-		public function LayerLocations(LOCATIONSIMAGE:Class, X:int = 0, Y:int = 0) 
+		public function LayerLocations(LOCATIONSIMAGE:BitmapData, X:int = 0, Y:int = 0) 
 		{
 			locationsImage = new Image(LOCATIONSIMAGE);
 			graphic = locationsImage;

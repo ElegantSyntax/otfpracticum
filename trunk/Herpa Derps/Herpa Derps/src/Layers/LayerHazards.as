@@ -16,7 +16,7 @@ package Layers
 	{
 		public var hazardsImage:Image;
 		
-		public function LayerHazards(HAZARDSIMAGE:Class, X:int = 0, Y:int = 0) 
+		public function LayerHazards(HAZARDSIMAGE:BitmapData, X:int = 0, Y:int = 0) 
 		{
 			hazardsImage = new Image(HAZARDSIMAGE);
 			graphic = hazardsImage;

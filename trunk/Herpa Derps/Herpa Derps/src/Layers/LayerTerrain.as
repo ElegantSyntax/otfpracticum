@@ -21,7 +21,7 @@ package Layers
 		public var isDestructable:Boolean;
 		public var   terrainImage:Image;
 		
-		public function LayerTerrain(TERRAINIMAGE:Class, ISDESTRUCTABLE:Boolean = false, X:int = 0, Y:int = 0) 
+		public function LayerTerrain(TERRAINIMAGE:BitmapData, ISDESTRUCTABLE:Boolean = false, X:int = 0, Y:int = 0) 
 		{
 			terrainImage = new Image(TERRAINIMAGE);
 			graphic = terrainImage;

@@ -18,7 +18,7 @@ package Derps
 		protected var    passenger:DerpsBasic;
 		protected var       fixedX:int;
 		
-		public function DerpsClimber(X:int = 0, Y:int = 0) 
+		public function DerpsClimber(X:int = 0, Y:int = 0, FACINGRIGHT:Boolean = true) 
 		{
 			sprite = new Spritemap(Assets.Climbers, 32, 32);
 			
@@ -29,7 +29,7 @@ package Derps
 			
 			type = "Climber";
 			
-			super(X, Y);
+			super(X, Y, FACINGRIGHT);
 			
 			speed = 1.75;
 		}

@@ -15,7 +15,7 @@ package Derps
 		
 		private var ability:DerpsAbility = new DerpsAbility(DerpsAbility.Runner);
 		
-		public function DerpsRunner(X:int = 0, Y:int = 0) 
+		public function DerpsRunner(X:int = 0, Y:int = 0, FACINGRIGHT:Boolean = true) 
 		{
 			sprite = new Spritemap(Assets.Runners, 32, 32);
 			
@@ -26,7 +26,7 @@ package Derps
 			
 			type = "Runner";
 			
-			super(X, Y);
+			super(X, Y, FACINGRIGHT);
 			
 			speed = 2.0;
 		}
