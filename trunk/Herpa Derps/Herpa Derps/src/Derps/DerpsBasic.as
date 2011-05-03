@@ -57,8 +57,7 @@ package Derps
 					while (!collide('Terrain', x+dirMod, y))
 					{
 						x+=dirMod;
-					}
-					
+					}					
 				}
 								
 				velocity.y += gravity;
@@ -146,7 +145,7 @@ package Derps
 		
 		public function resetVelocity():void
 		{
-			velocity.x = 0; velocity.y = 0;
+			velocity.x = 0; velocity.y = -0.01;
 		}
 	}
 

@@ -112,7 +112,7 @@ package
 			this.add(locations);
 			loader.contentLoaderInfo.removeEventListener(Event.COMPLETE, setLocations);
 			
-			locations.startPoint.y -= 256;
+			//locations.startPoint.y -= 256;
 			
 			var request:URLRequest = new URLRequest("Levels/" + leveldir + "/UnbreakableTerrain.png");
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, setUnbreakableTerrain);
