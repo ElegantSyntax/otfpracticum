@@ -48,6 +48,7 @@ package Derps
 				
 				if (!hasPassenger)
 				{
+					trace(facingRight);
 					ability.updatePos(x, y, facingRight);
 					terrain = ability.collide("Terrain", ability.x, ability.y) as LayerTerrain;
 					

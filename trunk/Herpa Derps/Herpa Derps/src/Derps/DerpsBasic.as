@@ -36,8 +36,8 @@ package Derps
 			setHitbox(28, 32, -2, 0);
 			layer = 4;
 			facingRight = FACINGRIGHT;
+						
 			trace(facingRight);
-			
 		}
 		
 		override public function update():void 
@@ -88,7 +88,7 @@ package Derps
 					y--;
 				}
 				
-				velocity.x = speed;
+				velocity.x = (facingRight) ? speed : -speed;
 			}
 					
 			y += velocity.y;
