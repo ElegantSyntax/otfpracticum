@@ -6,15 +6,13 @@ package
 	import flash.utils.getTimer;
 	import flash.utils.Timer;
 	public class theGame extends MovieClip
-	{
-		
+	{	
 		var Bolders:bolders = new bolders();
 		var background:Background = new Background();
 		var dino:Dino = new Dino();
 		
 		//TEXT
 		var scoreText:TextField;
-		var endGameText:TextField;
 		//TIME
 		var startTime:uint;
 		var time:uint;
@@ -37,13 +35,7 @@ package
 			scoreText.defaultTextFormat = tFormat;
 			scoreText.x = 10;
 			scoreText.y = 10;
-			
-			//end game text
-			endGameText = new TextField();
-			endGameText.x = 50;
-			endGameText.y = 200;
-			endGameText.defaultTextFormat = tFormat;
-			
+
 			//add it on the stage
 			addChild(scoreText);
 			//start time
@@ -54,18 +46,29 @@ package
 			setChildIndex(dino, 2);
 			setChildIndex(scoreText, 3);
 
-			addEventListener(Event.ENTER_FRAME, showTime);
-			addEventListener(Event.ENTER_FRAME, collisionCheck);
-			addEventListener(Event.ENTER_FRAME, fullSPEED);
-		
+			addEventListener(Event.ENTER_FRAME, Logic);
+		}
+		public function Logic(event:Event)
+		{
+			showTime(event);
+			collisionCheck(event);
+			fullSPEED(event);
+			
 		}
 		public function fullSPEED(event:Event)
 		{
-			//trace("time " +time);
-			if (time == 4000)
+			if (time >= 10000)
 			{
 				background.fullSPEED();
 				Bolders.fullSPEED();	
+			}
+			if (time >= 20000)
+			{
+				background.speedIncrease = 6;
+				background.fullSPEED();
+				Bolders.speedIncrease = 6;
+				Bolders.fullSPEED();
+				
 			}
 		}
 		public function collisionCheck(event:Event)
@@ -74,20 +77,27 @@ package
 			{
 				if (Bolders.arrayofBolders[numberOfBolders].hitTestObject(dino))
 				{
-						removeChild(dino);
-						removeChild(Bolders);
-						removeChild(background);
-					
-						
-						removeEventListener(Event.ENTER_FRAME, collisionCheck);
-						removeEventListener(Event.ENTER_FRAME, showTime);
-						DRD(this.parent).gotoAndStop("gameover");
-						endGameText.text = " GAME OVER";
-						addChild(endGameText);
+					gameOver();		
 				}
-
-			}
+			}		
+		}
+		private function gameOver()
+		{
+			//removeChild(dino);
+			//removeChild(Bolders);
+			//removeChild(background);
+						
+			removeEventListener(Event.ENTER_FRAME, Logic);
 			
+			var DRDRef:DRD;
+			
+			DRDRef = DRD(this.parent);
+			//Once we go to the next frame, we lose our parent here. Since we're taken off the stage.
+			DRDRef.gotoAndStop("gameover");
+			
+			DRDRef.TimeTxt.text = scoreText.text;
+			DRDRef.displayTEXT();	
+			DRDRef.endbtn.addEventListener(MouseEvent.CLICK, DRDRef.playAgain);
 		}
 		public function showTime(event:Event)
 		{

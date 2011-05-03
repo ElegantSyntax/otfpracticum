@@ -12,12 +12,14 @@ package
 
 		var yLowerLimit:uint = 448; 
 		public var speed:uint;
+		public var speedIncrease:uint;
 
 	
 		public function Background() 
 		{
 			var myLibraryGraphic:Class;
 			speed = 2;
+			speedIncrease = 4;
 			//Get the class (specifically movieclip) from my lib fla.
 			myLibraryGraphic = getDefinitionByName("bg_mc") as Class;
 			
@@ -40,7 +42,7 @@ package
 		}
 		public function fullSPEED()
 		{
-			speed =6;
+			speed = speedIncrease;
 		}
 		private function movingBG(event:Event)
 		{

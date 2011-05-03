@@ -11,7 +11,7 @@ package
 		var position2:uint = 64;
 		var position3:uint = 128;
 		
-		static var bolderPositiony:int = -128;
+		var bolderPositiony:int = -192;
 		
 		var arrayofBolders:Array;
 		
@@ -19,7 +19,8 @@ package
 
 		var yLowerLimit:uint = 448; 
 		public var speed:uint = 2;
-		static var count:int = 0;
+		public var speedIncrease:uint = 4;
+		static var count:int;
 		
 		
 		public function bolders() 
@@ -29,7 +30,7 @@ package
 			myLibraryGraphic = getDefinitionByName("bolders_mc") as Class;
 
 			arrayofBolders  = new Array();
-			
+			count = 0;
 			for (var lines:int; lines < 7; lines++)
 			{	
 				if (count == 0 || count == 2 || count == 4 || count == 6  )
@@ -62,7 +63,7 @@ package
 					}
 					arrayofBolders.push(bolder1);
 					arrayofBolders.push(bolder2);
-					
+				
 				}//end of if
 				else if( count == 1|| count == 3|| count == 5)
 				{
@@ -79,11 +80,12 @@ package
 			}
 	
 			addEventListener(Event.ENTER_FRAME, scrolling);
+
 						
 		}
 		public function fullSPEED()
 		{
-			speed = 4;
+				speed =speedIncrease;
 		}
 		
 		/*************************************
