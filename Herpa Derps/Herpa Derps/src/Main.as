@@ -22,7 +22,7 @@ package
 		override public function init():void 
 		{
 			FP.console.enable();
-			FP.world = new Level("TestLevel");
+			FP.world = new Level("TestLevel2");
 			
 			super.init();
 		}

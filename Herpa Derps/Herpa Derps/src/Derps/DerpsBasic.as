@@ -19,7 +19,7 @@ package Derps
 		public static const   special:int = 4;
 		
 		protected var          sprite:Spritemap;
-		protected var     facingRight:Boolean = true;
+		public var     facingRight:Boolean = true;
 		
 		protected var         gravity:Number = .15;
 		protected var           speed:Number = 1.5;
@@ -36,8 +36,6 @@ package Derps
 			setHitbox(28, 32, -2, 0);
 			layer = 4;
 			facingRight = FACINGRIGHT;
-						
-			trace(facingRight);
 		}
 		
 		override public function update():void 
@@ -144,6 +142,11 @@ package Derps
 		{
 			x = X;
 			y = Y;
+		}
+		
+		public function resetVelocity():void
+		{
+			velocity.x = 0; velocity.y = 0;
 		}
 	}
 
