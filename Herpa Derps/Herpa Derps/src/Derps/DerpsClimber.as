@@ -64,6 +64,7 @@ package Derps
 							hasPassenger = true;
 							passenger.isClimbing = true;
 							isClimbing = true;
+							passenger.resetVelocity();
 						}
 					}
 				}	
@@ -80,17 +81,15 @@ package Derps
 						x = fixedX;
 						
 						passenger.y = y;
-						passenger.x = (facingRight) ? x - 20:x + 20;
-						
-						
+						passenger.x = (facingRight) ? x - 20:x + 20;					
 					}
 					else
 					{
 						y -= velocity.y + gravity*2;
 						x = fixedX;
 						
-						passenger.y = y;
-						passenger.x = (facingRight) ? x - 20:x - 10;
+						passenger.y = y-100;
+						passenger.x = (facingRight) ? x - 10:x - 10;
 						
 						hitPoints = 0;
 						causeOfDeath = special;
