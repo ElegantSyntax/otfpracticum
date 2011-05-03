@@ -48,7 +48,6 @@ package Derps
 				
 				if (!hasPassenger)
 				{
-					trace(facingRight);
 					ability.updatePos(x, y, facingRight);
 					terrain = ability.collide("Terrain", ability.x, ability.y) as LayerTerrain;
 					
@@ -60,8 +59,8 @@ package Derps
 						if (passenger != null)
 						{
 							trace("Passenger Connected");
-							fixedX = x;
-							y -= velocity.y + gravity*2;
+							fixedX = (facingRight) ? x +3: x-3;
+							y -= 10 ;//velocity.y + gravity*2;
 							hasPassenger = true;
 							passenger.isClimbing = true;
 							isClimbing = true;
@@ -70,17 +69,34 @@ package Derps
 				}	
 				else
 				{
-					trace("Climbing");
+					ability.updatePos(fixedX, y+6, facingRight);
+					terrain = ability.collide("Terrain", ability.x, ability.y) as LayerTerrain;
 					
-					y -= velocity.y + gravity*2;
-					
-					passenger.y = y;
-					passenger.x = (facingRight) ? x - 20:x + 20;
-					
-					if (fixedX != x)
+					if (terrain != null)
 					{
+						trace("Climbing");
+						
+						y -= velocity.y + gravity*2;
+						x = fixedX;
+						
+						passenger.y = y;
+						passenger.x = (facingRight) ? x - 20:x + 20;
+						
+						
+					}
+					else
+					{
+						y -= velocity.y + gravity*2;
+						x = fixedX;
+						
+						passenger.y = y;
+						passenger.x = (facingRight) ? x - 20:x - 10;
+						
 						hitPoints = 0;
 						causeOfDeath = special;
+						passenger.resetVelocity();
+						
+						trace("dead");
 					}
 				} 
 				
