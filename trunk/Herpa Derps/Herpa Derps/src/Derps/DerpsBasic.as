@@ -108,6 +108,12 @@ package Derps
 					}
 				}				
 				
+				var crybaby:DerpsCrybaby = collide("Crybaby", x + velocity.x, y) as DerpsCrybaby;
+				if (crybaby != null && crybaby.isCrying)
+				{
+					movedToEmptySpace = false;
+				}
+				
 				//If we have not moved to an empty space we have hit a wall.
 				if (!movedToEmptySpace)
 				{
@@ -127,10 +133,10 @@ package Derps
 				}
 			}
 			
-			
+			var haz:LayerHazards;
 			if (velocity.y != 0) // falling
 			{
-				var haz:LayerHazards = collide('Hazard', x, y) as LayerHazards;
+				haz = collide('Hazard', x, y) as LayerHazards;
 				if (haz != null)
 				{
 					hitPoints = 0;
@@ -140,7 +146,7 @@ package Derps
 			}
 			else if (velocity.x != 0)
 			{
-				var haz:LayerHazards = collide('Hazard', x, y-1) as LayerHazards;
+				haz = collide('Hazard', x, y-1) as LayerHazards;
 				if (haz != null)
 				{
 					hitPoints = 0;

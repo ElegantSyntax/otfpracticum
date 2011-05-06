@@ -53,7 +53,7 @@ package Derps
 					
 					if (terrain != null)
 					{
-						var derpArray:Array = new Array("Gelly", "Climber", "Faller", "Runner");
+						var derpArray:Array = new Array("Gelly", "Climber", "Faller", "Runner", "Crybaby", "Exploder");
 						passenger = (collideTypes(derpArray, x, y)) as DerpsBasic;
 						
 						x -= velocity.x;
