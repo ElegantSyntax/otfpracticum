@@ -15,14 +15,17 @@ package Layers
 	public class LayerHazards extends Entity 
 	{
 		public var hazardsImage:Image;
+		public var isVertical:Boolean;
 		
-		public function LayerHazards(HAZARDSIMAGE:BitmapData, X:int = 0, Y:int = 0) 
+		public function LayerHazards(HAZARDSIMAGE:BitmapData, ISVERTICAL:Boolean = false, X:int = 0, Y:int = 0) 
 		{
 			hazardsImage = new Image(HAZARDSIMAGE);
 			graphic = hazardsImage;
 			
 			x = X;
 			y = Y;
+			
+			isVertical = ISVERTICAL;
 			
 			layer = 10;
 			type = "Hazard";

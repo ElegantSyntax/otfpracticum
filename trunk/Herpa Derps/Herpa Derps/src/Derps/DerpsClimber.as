@@ -27,9 +27,9 @@ package Derps
 			sprite.play("normal");
 			graphic = sprite;
 			
-			type = "Climber";
 			
 			super(X, Y, FACINGRIGHT);
+			type = "Climber";
 			
 			speed = 1.75;
 		}
@@ -53,12 +53,13 @@ package Derps
 					
 					if (terrain != null)
 					{
-						passenger = collide("Gelly", x, y) as DerpsBasic;
+						var derpArray:Array = new Array("Gelly", "Climber", "Faller", "Runner");
+						passenger = (collideTypes(derpArray, x, y)) as DerpsBasic;
+						
 						x -= velocity.x;
 						
 						if (passenger != null)
 						{
-							trace("Passenger Connected");
 							fixedX = (facingRight) ? x +3: x-3;
 							y -= 10 ;//velocity.y + gravity*2;
 							hasPassenger = true;
@@ -75,8 +76,6 @@ package Derps
 					
 					if (terrain != null)
 					{
-						trace("Climbing");
-						
 						y -= velocity.y + gravity*2;
 						x = fixedX;
 						
@@ -85,17 +84,20 @@ package Derps
 					}
 					else
 					{
-						y -= velocity.y + gravity*2;
-						x = fixedX;
+						passenger.y = Math.floor(y)+3;
 						
-						passenger.y = y-100;
-						passenger.x = (facingRight) ? x - 10:x - 10;
+						x = Math.floor(fixedX);
+					
+						var dirMod:int = (facingRight) ? 1 : -1;
+											
+						while (!passenger.collide('Terrain', passenger.x, passenger.y) )
+						{
+							passenger.x+=dirMod;
+						}	
 						
 						hitPoints = 0;
 						causeOfDeath = special;
 						passenger.resetVelocity();
-						
-						trace("dead");
 					}
 				} 
 				
@@ -103,8 +105,6 @@ package Derps
 			}
 			else if (causeOfDeath == special)
 			{
-				passenger.x = x;
-				passenger.y = y;
 				passenger.isClimbing = false;
 				
 				// Cool Death
