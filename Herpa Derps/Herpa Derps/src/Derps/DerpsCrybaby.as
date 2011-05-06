@@ -4,13 +4,14 @@ package Derps
 	import net.flashpunk.graphics.Spritemap;
 	import Pointer;
 	import net.flashpunk.FP;
+	import Derps.DerpsExploder;
 	/**
 	 * ...
 	 * @author Joseph O'Connor
 	 */
 	public class DerpsCrybaby extends DerpsBasic 
 	{
-		protected var isCrying:Boolean = false;
+		public var isCrying:Boolean = false;
 		protected var fixedPos:Point = new Point();
 		
 		public function DerpsCrybaby(X:int = 0, Y:int = 0, FACINGRIGHT:Boolean = true) 
@@ -43,13 +44,18 @@ package Derps
 					x = fixedPos.x;
 					y = fixedPos.y;
 					
-					this.type = "Terrain";
-					
+					setHitbox(32, 32, 0, 0);
 					// check for collision against Bombers
-				}
-				else
-				{
-					this.type = "Crybaby";
+					var bomb:DerpsExploder = collide("Exploder", x, y) as DerpsExploder;
+					if (bomb != null)
+					{
+						bomb.detonate = true;
+						hitPoints = 0;
+						causeOfDeath = special;
+					}
+					
+					setHitbox(28, 32, -2, 0);
+					
 				}
 				
 			}

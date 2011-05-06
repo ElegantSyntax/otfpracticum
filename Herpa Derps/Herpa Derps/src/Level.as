@@ -16,6 +16,7 @@ package
 	import Derps.DerpsFallers;
 	import Derps.DerpsRunner;
 	import Derps.DerpsCrybaby;
+	import Derps.DerpsExploder;
 	import Layers.LayerBG;
 	import Layers.LayerHazards;
 	import Layers.LayerLocations;
@@ -166,6 +167,11 @@ package
 			if (Input.released(Key.DIGIT_5))
 			{
 				this.add(new DerpsCrybaby(locations.startPoint.x,locations.startPoint.y, facingRight));
+			}
+			
+			if (Input.released(Key.DIGIT_6))
+			{
+				this.add(new DerpsExploder(locations.startPoint.x,locations.startPoint.y, facingRight));
 			}
 			
 			// Camera Controls
