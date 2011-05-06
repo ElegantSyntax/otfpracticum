@@ -12,8 +12,6 @@ package
 	[Frame(factoryClass="Preloader")]
 	public class Main extends Engine 
 	{
-		
-		
 		public function Main():void 
 		{
 			super(800, 480, 60, true);

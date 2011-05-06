@@ -47,7 +47,7 @@ package Derps
 				sprite.play("dead");
 				var dirMod:int = (facingRight) ? 1 : -1;
 				
-				if (!collide('Hazard', x, y - 32) )
+				if (!collide('Hazard', x, y - 32))
 				{
 					// Falling
 					sprite.centerOrigin();

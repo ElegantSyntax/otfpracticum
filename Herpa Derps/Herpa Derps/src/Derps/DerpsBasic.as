@@ -2,6 +2,7 @@ package Derps
 {
 	import Assets;
 	import flash.geom.Point;
+	import Layers.LayerHazards;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Spritemap;
 	import net.flashpunk.FP;
@@ -126,11 +127,30 @@ package Derps
 				}
 			}
 			
-			if (collide('Hazard', x, y))
+			
+			if (velocity.y != 0) // falling
 			{
-				hitPoints = 0;
-				causeOfDeath = hazard;
+				var haz:LayerHazards = collide('Hazard', x, y) as LayerHazards;
+				if (haz != null)
+				{
+					hitPoints = 0;
+					causeOfDeath = hazard;
+				}
+				
 			}
+			else if (velocity.x != 0)
+			{
+				var haz:LayerHazards = collide('Hazard', x, y-1) as LayerHazards;
+				if (haz != null)
+				{
+					hitPoints = 0;
+					causeOfDeath = hazard;
+				}
+			}
+			
+			
+			
+			
 			
 			sprite.flipped = !facingRight;
 			
@@ -145,7 +165,7 @@ package Derps
 		
 		public function resetVelocity():void
 		{
-			velocity.x = 0; velocity.y = -0.01;
+			velocity.x = 0; velocity.y = 0;
 		}
 	}
 

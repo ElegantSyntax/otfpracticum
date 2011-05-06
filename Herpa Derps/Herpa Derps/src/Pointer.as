@@ -32,8 +32,8 @@ package
 		
 		override public function update():void 
 		{
-			currentPoint.x = FP.world.mouseX;
-			currentPoint.y = FP.world.mouseY;
+			x = currentPoint.x = FP.world.mouseX;
+			y = currentPoint.y = FP.world.mouseY;
 			
 			if (pointerState == click)
 			{

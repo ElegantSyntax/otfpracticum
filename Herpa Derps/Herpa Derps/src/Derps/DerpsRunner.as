@@ -24,9 +24,8 @@ package Derps
 			sprite.play("normal");
 			graphic = sprite;
 			
-			type = "Runner";
-			
 			super(X, Y, FACINGRIGHT);
+			type = "Runner";
 			
 			speed = 2.0;
 		}

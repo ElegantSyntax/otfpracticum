@@ -28,9 +28,10 @@ package Derps
 			sprite.play("normal");
 			graphic = sprite;
 			
-			type = "Faller";
+			
 			
 			super(X, Y, FACINGRIGHT);
+			type = "Faller";
 		}
 		
 		override public function update():void 
